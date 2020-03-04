@@ -24,6 +24,9 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 import configureStore from './configureStore';
 
+// Import CSS reset and Global Styles
+import './global-styles.css';
+
 // Import i18n messages
 import { translationMessages } from './i18n';
 

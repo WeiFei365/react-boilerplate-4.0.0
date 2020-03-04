@@ -20,6 +20,19 @@ module.exports = require('./webpack.base.babel')({
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
+  cssLoaders: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        // css 文件中定义的 .class-name 类名在 js 文件中引用时会被转换成 className 驼峰名
+        camelCase: true,
+        // CSS Modules
+        modules: true,
+      },
+    },
+  ],
+
   optimization: {
     minimize: true,
     minimizer: [
