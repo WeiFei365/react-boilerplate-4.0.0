@@ -1,3 +1,36 @@
+## 修改说明：
+
+  目的在于：降低 react 技术栈深度、减少一些新技术过早的引入、应用最合适的开发工具（因人而异）、体验 react 新版本特性；修改了[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)的技术架构；
+  同时，也为了结合当前比较认可的React UI框架；
+
+  修改内容详见[Github Commits](https://github.com/WeiFei365/react-boilerplate-4.0.0/commits/master)；
+  在真实的使用中，可根据需要截取部分的 commit，或增加其他的自定义；
+
+
+### 使用说明
+
+  - 在你自己的 Git 仓库中新建一个项目，然后 clone 到本地；
+  - 拷贝本项目下所有文件/夹到新建的项目(.git除外)；
+  - 修改 package.json 中的项目名称；
+
+  接下来，参阅：[开发公约.md](开发公约.md)
+
+
+### 组件目录结构、规划说明
+
+  * app/apis* 目录：所有请求 api 接口的存放目录，以文件名划分不同的业务需求；
+  * app/components* 目录：所有通用并且功能性组件的目录；
+  * app/containers* 目录：所有路由、布局、固定元素级别的组件目录，并且，路由内自用的组件、工具函数等在其内建子目录或文件存放；
+  * app/configs* 目录：运行环境、静态变量等相关的定义；
+  * app/contexts* 目录：react 中 context 的定义；
+  * app/decorators* 目录：为了简化部分外部组件的使用，如：Antd 中的 Pagination；
+  * app/models* 目录：所有 store 的定义；
+  * app/styles* 目录：按功能的全局样式定义；
+  * app/utils* 目录：项目个性化的 utils 目录；
+  * app/pages* 目录（可选）：构建多页应用时，各个页面的入口定义；
+  * app/web-utils* 目录（可选）：参考[web-utils](https://github.com/WeiFei365/web-utils)
+
+
 <img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
 
 <br />
