@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const antdModifyVars = require('../../app/antd-modifyVars.js');
 
@@ -23,7 +25,9 @@ module.exports = require('./webpack.base.babel')({
   },
 
   cssLoaders: [
-    'style-loader',
+    {
+      loader: MiniCssExtractPlugin.loader,
+    },
     {
       loader: 'css-loader',
       options: {
@@ -36,7 +40,9 @@ module.exports = require('./webpack.base.babel')({
   ],
 
   antdLessLoaders: [
-    'style-loader',
+    {
+      loader: MiniCssExtractPlugin.loader,
+    },
     {
       loader: 'css-loader',
       options: {
@@ -73,6 +79,7 @@ module.exports = require('./webpack.base.babel')({
         cache: true,
         sourceMap: true,
       }),
+      new OptimizeCSSAssetsPlugin({}),
     ],
     nodeEnv: 'production',
     sideEffects: true,
@@ -97,6 +104,12 @@ module.exports = require('./webpack.base.babel')({
   },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+    }),
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: 'app/index.html',
