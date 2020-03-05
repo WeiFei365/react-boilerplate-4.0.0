@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 module.exports = options => ({
   mode: options.mode,
@@ -40,6 +41,11 @@ module.exports = options => ({
         test: /\.css$/,
         include: /node_modules/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        // Preprocess antd theme
+        test: /(antd\/){1}.+\.less$/,
+        use: options.antdLessLoaders,
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
@@ -92,6 +98,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    new AntdDayjsWebpackPlugin(),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],

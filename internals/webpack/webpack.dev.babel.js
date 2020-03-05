@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
+const antdModifyVars = require('../../app/antd-modifyVars.js');
+
 module.exports = require('./webpack.base.babel')({
   mode: 'development',
 
@@ -35,6 +37,26 @@ module.exports = require('./webpack.base.babel')({
         sourceMap: true,
         // https://github.com/webpack-contrib/css-loader/tree/v2.1.1#localidentname
         localIdentName: '[local]__[path][name]__[hash:base64:5]',
+      },
+    },
+  ],
+
+  antdLessLoaders: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: true,
+        // 允许 less-loader 预处理
+        importLoaders: 1,
+      },
+    },
+    {
+      loader: 'less-loader',
+      options: {
+        modifyVars: antdModifyVars,
+        javascriptEnabled: true,
+        sourceMap: true,
       },
     },
   ],

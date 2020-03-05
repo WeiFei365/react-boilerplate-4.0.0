@@ -9,6 +9,7 @@ module.exports = {
     '@babel/preset-react',
   ],
   plugins: [
+    ['import', { libraryName: 'antd', style: true, libraryDirectory: 'es' }],
     'styled-components',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',

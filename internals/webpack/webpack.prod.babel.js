@@ -5,6 +5,8 @@ const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
+const antdModifyVars = require('../../app/antd-modifyVars.js');
+
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
 
@@ -29,6 +31,24 @@ module.exports = require('./webpack.base.babel')({
         camelCase: true,
         // CSS Modules
         modules: true,
+      },
+    },
+  ],
+
+  antdLessLoaders: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        // 允许 less-loader 预处理
+        importLoaders: 1,
+      },
+    },
+    {
+      loader: 'less-loader',
+      options: {
+        modifyVars: antdModifyVars,
+        javascriptEnabled: true,
       },
     },
   ],
