@@ -143,6 +143,9 @@ module.exports = require('./webpack.base.babel')({
   ],
 
   performance: {
+    hints: 'error',
+    // 入口体积超过时，提示
+    maxEntrypointSize: 512 * 1000,
     assetFilter: assetFilename =>
       !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
