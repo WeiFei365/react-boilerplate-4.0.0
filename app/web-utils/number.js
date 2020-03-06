@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * 格式化数值, 增加千位符, 不会增加小数部分的千位符
  * @author WEIFEI

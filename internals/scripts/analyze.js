@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// https://chrisbateman.github.io/webpack-visualizer/
+
 const shelljs = require('shelljs');
 const chalk = require('chalk');
 const animateProgress = require('./helpers/progress');
@@ -9,7 +11,7 @@ const progress = animateProgress('Generating stats');
 
 // Generate stats.json file with webpack
 shelljs.exec(
-  'webpack --config internals/webpack/index.js --profile --json > stats.json',
+  'cross-env NODE_ENV=production webpack --config internals/webpack/index.js --json > stats.json',
   addCheckMark.bind(null, callback), // Output a checkmark on completion
 );
 

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // 已知至少兼容：Chrome、IE10+
 export const fileDownload = (fileUrl, fileName, onPercent, onFinish) =>
   new Promise(resolve => {

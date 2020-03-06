@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { lstoreGet } from '../store/local-storage';
 import { jsonStringify, hashStringify } from '../native';
 import request from './request';

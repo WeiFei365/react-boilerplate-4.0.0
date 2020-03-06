@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * [操作 history/location 工具包]
  * @author  WEIFEI

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const vcString = v => (typeof v === 'string' ? v : '');
 export const vcStringTo = v =>
   v === undefined || v === null || _.isNaN(v) ? '' : String(v);

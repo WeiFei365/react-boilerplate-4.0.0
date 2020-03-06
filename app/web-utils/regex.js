@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // 手机号码
 export const regexPhone = () => /^1[0-9]{10}$/;
 

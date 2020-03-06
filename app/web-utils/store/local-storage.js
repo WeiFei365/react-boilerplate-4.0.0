@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * [操作 localStorage 工具包]
  * ❤️
