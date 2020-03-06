@@ -15,6 +15,10 @@ module.exports = {
     node: true,
     es6: true,
   },
+  globals: {
+    _: true,
+    UTS: true,
+  },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
@@ -82,7 +86,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: './internals/webpack/webpack.prod.babel.js',
+        config: './internals/webpack/webpack.lint.js',
       },
     },
   },

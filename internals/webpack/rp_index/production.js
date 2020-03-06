@@ -7,9 +7,9 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const antdModifyVars = require('../../app/antd-modifyVars.js');
+const antdModifyVars = require('../../../app/antd-modifyVars.js');
 
-module.exports = require('./webpack.base.babel')({
+module.exports = {
   mode: 'production',
 
   // In production, we skip all hot-reloading stuff
@@ -37,6 +37,13 @@ module.exports = require('./webpack.base.babel')({
         modules: true,
       },
     },
+  ],
+
+  cssLoadersModules: [
+    {
+      loader: MiniCssExtractPlugin.loader,
+    },
+    'css-loader',
   ],
 
   antdLessLoaders: [
@@ -144,9 +151,11 @@ module.exports = require('./webpack.base.babel')({
 
   performance: {
     hints: 'error',
-    // 入口体积超过时，提示
-    maxEntrypointSize: 512 * 1000,
+    // 允许的打包文件最大大小，超出则会显示 warning
+    maxAssetSize: 512000,
+    // 允许的入口文件最大大小，超出则会显示 warning，webpack对这里的计算是 cacheGroups 的加和，而不只是 main
+    maxEntrypointSize: 5120000,
     assetFilter: assetFilename =>
       !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
   },
-});
+};

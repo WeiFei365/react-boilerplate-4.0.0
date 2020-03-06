@@ -7,9 +7,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const antdModifyVars = require('../../app/antd-modifyVars.js');
+const antdModifyVars = require('../../../app/antd-modifyVars.js');
 
-module.exports = require('./webpack.base.babel')({
+module.exports = {
   mode: 'development',
 
   // Add hot reloading in development
@@ -87,4 +87,4 @@ module.exports = require('./webpack.base.babel')({
   performance: {
     hints: false,
   },
-});
+};

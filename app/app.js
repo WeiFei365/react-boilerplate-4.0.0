@@ -13,7 +13,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -32,7 +31,7 @@ const MOUNT_NODE = document.getElementById('app');
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history}>
+      <Router history={UTS.history}>
         <App />
       </Router>
     </Provider>,
