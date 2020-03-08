@@ -2,10 +2,10 @@ import invariant from 'invariant';
 import { isEmpty, isFunction, isString } from 'lodash';
 
 import checkStore from './checkStore';
-import createReducer from '../reducers';
+// import createReducer from '../reducers';
 
 export function injectReducerFactory(store, isValid) {
-  return function injectReducer(key, reducer) {
+  return function injectReducer(key, reducer, createReducer) {
     if (!isValid) checkStore(store);
 
     invariant(

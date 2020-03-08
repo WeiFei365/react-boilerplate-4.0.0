@@ -16,12 +16,12 @@ import { Router } from 'react-router-dom';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
-import App from 'containers/App';
+import AppDT from 'containers/App/AppDT';
 
 import configureStore from './configureStore';
 
 // Import CSS reset and Global Styles
-import './global-styles.css';
+import '../../global-styles.css';
 
 // Create redux store
 const initialState = {};
@@ -32,7 +32,7 @@ const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={UTS.history}>
-        <App />
+        <AppDT />
       </Router>
     </Provider>,
     MOUNT_NODE,
@@ -43,7 +43,7 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept(['containers/App'], () => {
+  module.hot.accept(['containers/App/AppDT'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render();
   });
