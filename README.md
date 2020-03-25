@@ -6,6 +6,27 @@
   修改内容详见[Github Commits](https://github.com/WeiFei365/react-boilerplate-4.0.0/commits/master)；
   在真实的使用中，可根据需要截取部分的 commit，或增加其他的自定义；
 
+#### 部分依赖版本升级说明
+
+  * reselect@4.0.0【最新版】
+
+  * redux-saga@1.1.3【最新版】
+
+  * redux@4.0.5【最新版】修复一个小的内存泄露问题；
+
+  *  react-router@5.1.2【最新稳定版】react hooks
+    * 1、route元素的绘制改为children；
+    * 2、使用 hooks 来获取 param、location、history等信息；
+    * 3、withRouter被hooks替代；
+
+  * react-redux@6.x react context
+  * react-redux@7.0 解决react context性能问题、hooks
+  * react-redux@7.1 优化hooks
+  * react-redux@7.2【最新版】修复现存的性能问题、打包体积减小
+
+  * history@4.10.1【最新稳定版】
+
+  * react@16.13.0【最新版】修复一些问题、性能优化、并发模式（实验性）、
 
 ### 使用说明
 
