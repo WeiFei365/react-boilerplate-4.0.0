@@ -15,7 +15,7 @@ module.exports = {
   // In production, we skip all hot-reloading stuff
   entry: [
     require.resolve('react-app-polyfill/ie11'),
-    path.join(process.cwd(), 'app/pages/rp_index/app.js'),
+    path.join(process.cwd(), 'app/pages/rp_index/main.js'),
   ],
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets

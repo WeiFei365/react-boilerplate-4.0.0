@@ -3,7 +3,7 @@
 module.exports = (NODE_ENV, APP_ENV) =>
   require('../base')(
     {
-      ROUTER: '/dt/',
+      PUBLIC_PATH: '/dt/',
     },
     NODE_ENV,
     APP_ENV,

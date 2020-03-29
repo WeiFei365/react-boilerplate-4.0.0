@@ -3,6 +3,5 @@
  * @see https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
  */
 module.exports = {
-  'btn-primary-bg': 'orange',
-  'layout-header-height': '48px',
+  'layout-header-background': '#20232a',
 };

@@ -1,52 +1,46 @@
-/**
- * app.js
- *
- * This is the entry file for the application, only setup and boilerplate
- * code.
- */
-
-// Needed for redux-saga es6 generator support
-import '@babel/polyfill';
-
-// Import all the third party stuff
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-import 'sanitize.css/sanitize.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-// Import root app
-import AppRP from 'containers/App/AppRP';
+import { Layout } from 'antd';
 
-import configureStore from './configureStore';
+import DidCatch from 'components/DidCatch';
 
-// Import CSS reset and Global Styles
-import '../../global-styles.css';
+import Protect from 'containers/Protect';
 
-// Create redux store
-const initialState = {};
-const store = configureStore(initialState);
-const MOUNT_NODE = document.getElementById('app');
+import { routes } from 'configs/page/rp_index/routes';
 
-const render = () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <Router history={UTS.history}>
-        <AppRP />
-      </Router>
-    </Provider>,
-    MOUNT_NODE,
+import AppFooter from 'containers/AppFooter';
+import AppSider from 'containers/AppSider';
+import AppHeader from 'containers/AppHeader';
+
+const { PRE_PUBLIC_PATH } = process.env.app;
+
+export default function App() {
+  return (
+    <Layout className="fill-100" id="container">
+      <DidCatch>
+        <AppHeader />
+      </DidCatch>
+      <Layout>
+        <DidCatch>
+          <AppSider />
+        </DidCatch>
+        <DidCatch>
+          <Switch>
+            {routes.map(({ key, exact, ...rest }) => (
+              <Route key={key} exact={exact} path={key}>
+                <Protect {...rest} />
+              </Route>
+            ))}
+            <Route path="*">
+              <Redirect to={PRE_PUBLIC_PATH} />
+            </Route>
+          </Switch>
+        </DidCatch>
+      </Layout>
+      <DidCatch>
+        <AppFooter />
+      </DidCatch>
+    </Layout>
   );
-};
-
-if (module.hot) {
-  // Hot reloadable React components and translation json files
-  // modules.hot.accept does not accept dynamic dependencies,
-  // have to be constants at compile-time
-  module.hot.accept(['containers/App/AppRP'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render();
-  });
 }
-
-render();

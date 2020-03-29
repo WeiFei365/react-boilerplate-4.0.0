@@ -109,7 +109,7 @@ export default (url, options) =>
       }
       if (resp.code === 0) {
         // 1、检查请求成功的标志
-        return resp;
+        return resp.data;
       }
       if (resp.error) {
         // 2、前端错误处理

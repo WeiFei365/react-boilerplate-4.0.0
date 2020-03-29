@@ -1,0 +1,25 @@
+.page {
+  text-align: center;
+  padding: 10rem 0 7.5rem;
+}
+
+.icon {
+  opacity: 0.85;
+  margin: 1rem;
+  animation-name: appLoading;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes appLoading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.tips {
+  color: rgba(0,0,0,0.4);
+}

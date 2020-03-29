@@ -28,7 +28,61 @@
     <strong>enable JS</strong> to make this app work.</noscript>
 
   <!-- The app hooks into this div -->
-  <div id="app"></div>
+  <div id="app">
+    <style media="screen" type="text/css">
+      .app-loading {
+        padding: 10rem 0 7.5rem;
+        position: relative;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: #fff;
+        z-index: 99998;
+      }
+      .app-icon {
+        width: 50px;
+        margin: 1rem;
+        -webkit-animation-name: appLoading;
+        animation-name: appLoading;
+        -webkit-animation-duration: 0.8s;
+        animation-duration: 0.8s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+      @-webkit-keyframes appLoading {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes appLoading {
+        0% {
+          -webkit-transform: rotate(0);
+          transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      .app-tips {
+        color: rgba(0,0,0,0.4);
+      }
+    </style>
+    <div class="app-loading">
+      <img class="app-icon" src="../../images/loading.svg" alt="加载动画">
+      <p class="app-tips">应用加载中...</p>
+    </div>
+  </div>
   <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically injects all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this file. Don't add any assets here! (Check out webpack.dev.babel.js and webpack.prod.babel.js if you want to know more) -->
 </body>
 

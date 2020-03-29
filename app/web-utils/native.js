@@ -1,6 +1,34 @@
 import _ from 'lodash';
 
 /**
+ * 安全的转码字符串
+ * @param {*} str 是
+ * @param {*} dft 出错时的返回值
+ */
+export const encodeURIComponent = (str, dft) => {
+  try {
+    return window.encodeURIComponent(str);
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+  }
+  return dft;
+};
+
+/**
+ * 安全的解码字符串
+ * @param {*} str 是
+ * @param {*} dft 出错时的返回值
+ */
+export const decodeURIComponent = (str, dft) => {
+  try {
+    return window.decodeURIComponent(str);
+  } catch (err) {
+    console.error(err); // eslint-disable-line no-console
+  }
+  return dft;
+};
+
+/**
  * [安全的将字符串转成 json]
  * @author WEIFEI
  * @method jsonParse
@@ -16,7 +44,7 @@ export const jsonParse = (jsonstr, dft) => {
   try {
     return JSON.parse(jsonstr);
   } catch (err) {
-    // console.error(err);
+    console.error(err); // eslint-disable-line no-console
   }
 
   return dft;
@@ -38,7 +66,7 @@ export const jsonStringify = (jsondata, dft = '') => {
   try {
     return JSON.stringify(jsondata);
   } catch (err) {
-    // console.error(err);
+    console.error(err); // eslint-disable-line no-console
   }
 
   return dft;

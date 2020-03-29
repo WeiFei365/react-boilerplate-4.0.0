@@ -12,13 +12,23 @@ export * from './browser';
 
 export * from './date';
 
+export * from './mvp';
+
 export * from './native';
 
 export * from './number';
 
 export * from './regex';
 
-export function reactKey(i) {
+const { IS_PRODUCTION } = process.env.app;
+
+if (IS_PRODUCTION) {
+  ['log', 'error', 'warn'].forEach(k => {
+    window.console[k] = func;
+  });
+}
+
+export function func(i) {
   return i;
 }
 

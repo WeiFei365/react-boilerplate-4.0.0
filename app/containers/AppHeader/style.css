@@ -1,0 +1,35 @@
+.header {
+  color: #fff;
+  display: flex;
+  padding-left: 0;
+  align-items: center;
+}
+
+.header.v {
+  padding-left: 6px;
+}
+
+.switch {
+  opacity: 0.65;
+}
+.switch:hover {
+  opacity: 1;
+}
+
+.logo {
+  width: 176px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  margin: 12px;
+  transition: all 0.2s;
+  border: 6px solid transparent;
+  background-image: url("../../images/icon-512x512.png");
+}
+.logo.true {
+  width: 56px;
+  color: #fff;
+}

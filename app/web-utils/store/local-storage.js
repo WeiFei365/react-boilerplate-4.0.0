@@ -11,8 +11,9 @@ import _ from 'lodash';
  * @requires lodash
  */
 
+import { userParser } from '../mvp';
 import { jsonStringify, jsonParse } from '../native';
-import { vcArrayObjectKey, vcObjectKeyNull } from '../other/value-checker';
+import { vcArrayObjectKey } from '../other/value-checker';
 
 const NKEY = `_${Date.now()}_${Math.random()}`;
 // 数据存储池
@@ -25,7 +26,7 @@ const saveKeys = {
   // 检验 t 存在，否则 []
   'search-words': vcArrayObjectKey('t'),
   // 检验 id 和 token 同时存在，否则 null
-  user: v => vcObjectKeyNull('id')(vcObjectKeyNull('token')(v)),
+  user: userParser,
 };
 
 /**
@@ -100,12 +101,22 @@ export function lstoreInit(isForce = false) {
   if (!store[NKEY] && !isForce) {
     return;
   }
-  Object.keys(saveKeys).forEach(name => {
-    // 从localStorage读取指定key的数据
-    store[name] = jsonParse(localStorage.getItem(name));
-    // 验证已加载的数据正确性: 根据用户设定的校验器或默认校验器
-    store[name] = saveKeys[name](store[name]);
-  });
-
+  lstoreRefresh(Object.keys(saveKeys));
   delete store[NKEY];
+}
+
+/**
+ * 从 localStorage 中加载数据，如果其他页面更改了数据，可以使用该方法加薪更新后的数据
+ * @param {*} keys 是 saveKeys 中定义的 KEY 的集合
+ */
+export function lstoreRefresh(keys) {
+  (keys || []).forEach(name => {
+    if (!saveKeys[name]) {
+      return;
+    }
+    // 从localStorage读取指定key的数据
+    const value = jsonParse(localStorage.getItem(name));
+    // 验证已加载的数据正确性: 根据用户设定的校验器或默认校验器
+    store[name] = saveKeys[name](value);
+  });
 }

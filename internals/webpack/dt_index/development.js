@@ -16,7 +16,7 @@ module.exports = {
   entry: [
     require.resolve('react-app-polyfill/ie11'),
     'webpack-hot-middleware/client?reload=true',
-    path.join(process.cwd(), 'app/pages/dt_index/app.js'), // Start with js/app.js
+    path.join(process.cwd(), 'app/pages/dt_index/main.js'), // Start with js/app.js
   ],
 
   // Don't use hashes in dev mode for better performance

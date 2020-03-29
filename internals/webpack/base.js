@@ -20,7 +20,7 @@ module.exports = options => ({
     {
       // Compile into js/build.js
       path: path.resolve(process.cwd(), 'build'),
-      publicPath: envConfigs.ROUTER,
+      publicPath: envConfigs.PUBLIC_PATH,
     },
     options.output,
   ), // Merge with env dependent settings
@@ -60,7 +60,7 @@ module.exports = options => ({
           {
             loader: 'file-loader',
             options: {
-              publicPath: envConfigs.ROUTER,
+              publicPath: envConfigs.PUBLIC_PATH,
             },
           },
         ],
@@ -74,7 +74,7 @@ module.exports = options => ({
               // Inline files smaller than 10 kB
               limit: 10 * 1024,
               noquotes: true,
-              publicPath: envConfigs.ROUTER,
+              publicPath: envConfigs.PUBLIC_PATH,
             },
           },
         ],
@@ -87,7 +87,7 @@ module.exports = options => ({
             options: {
               // Inline files smaller than 10 kB
               limit: 1 * 1024,
-              publicPath: envConfigs.ROUTER,
+              publicPath: envConfigs.PUBLIC_PATH,
             },
           },
         ],
@@ -102,7 +102,7 @@ module.exports = options => ({
           loader: 'url-loader',
           options: {
             limit: 10000,
-            publicPath: envConfigs.ROUTER,
+            publicPath: envConfigs.PUBLIC_PATH,
           },
         },
       },
